@@ -53,21 +53,6 @@ const Register = () => {
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50">
-      {/* Header with back navigation
-      <div className="bg-white shadow-sm">
-        <div className="max-w-md mx-auto px-4 py-4 flex items-center">
-          <button
-            onClick={() => navigate("/")}
-            className="text-gray-600 hover:text-gray-800 mr-3"
-          >
-            <ArrowLeft className="h-5 w-5" />
-          </button>
-          <h1 className="text-lg font-semibold text-gray-900">
-            Create Account
-          </h1>
-        </div>
-      </div> */}
-
       {/* Main content */}
       <div className="px-4 py-8">
         <div className="max-w-md mx-auto">

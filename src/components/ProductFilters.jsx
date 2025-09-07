@@ -81,9 +81,6 @@ const ProductFilters = ({ onFilterChange, filters }) => {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Category Filter */}
             <div>
-              {/* <label className="block text-sm font-medium text-gray-700 mb-2">
-                Category
-              </label> */}
               <select
                 value={filters.category}
                 onChange={(e) => handleFilterChange("category", e.target.value)}
@@ -100,9 +97,6 @@ const ProductFilters = ({ onFilterChange, filters }) => {
 
             {/* Min Price */}
             <div>
-              {/* <label className="block text-sm font-medium text-gray-700 mb-2">
-                Min Price ($)
-              </label> */}
               <input
                 type="number"
                 placeholder="Min Price ($)"
@@ -115,9 +109,6 @@ const ProductFilters = ({ onFilterChange, filters }) => {
 
             {/* Max Price */}
             <div>
-              {/* <label className="block text-sm font-medium text-gray-700 mb-2">
-                Max Price ($)
-              </label> */}
               <input
                 type="number"
                 placeholder="Max Price ($)"
@@ -143,7 +134,6 @@ const ProductFilters = ({ onFilterChange, filters }) => {
               <button
                 onClick={clearFilters}
                 className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"
-                // disabled={activeFiltersCount === 0}
               >
                 Clear
               </button>
