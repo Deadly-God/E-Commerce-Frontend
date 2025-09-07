@@ -143,7 +143,7 @@ const ProductFilters = ({ onFilterChange, filters }) => {
               <button
                 onClick={clearFilters}
                 className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 transition-colors"
-                disabled={activeFiltersCount === 0}
+                // disabled={activeFiltersCount === 0}
               >
                 Clear
               </button>
