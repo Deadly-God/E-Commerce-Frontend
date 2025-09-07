@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShoppingCart, ArrowLeft, Trash2, AlertTriangle } from "lucide-react";
+import { ShoppingCart, ArrowLeft, AlertTriangle } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import CartItem from "../components/CartItem";
@@ -47,21 +47,30 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="container mx-auto px-4 py-4 sm:py-8">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
-          <div className="flex items-center space-x-4 mb-4 sm:mb-0">
-            <Link
-              to="/"
-              className="flex items-center text-primary-600 hover:text-primary-700 transition-colors"
-            >
-              <ArrowLeft className="h-5 w-5 mr-2" />
-              <span className="font-medium">Continue Shopping</span>
-            </Link>
+        {/* Cart Header with Title and Clear Button */}
+        <div className="flex items-center justify-between mb-6 px-4 sm:px-6">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+              Cart
+            </h1>
+            <p className="text-sm sm:text-base text-gray-600 mt-1">
+              {total_items} {total_items === 1 ? "item" : "items"}
+            </p>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
-            Shopping Cart
-          </h1>
+          {/* Clear Cart Button - Only show if items exist and user is authenticated */}
+          {items.length > 0 && isAuthenticated && (
+            <button
+              onClick={handleClearCart}
+              className="flex items-center space-x-2 px-3 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors border border-red-200 hover:border-red-300"
+            >
+              <AlertTriangle className="h-4 w-4" />
+              <span className="text-sm font-medium hidden sm:inline">
+                Clear Cart
+              </span>
+              <span className="text-sm font-medium sm:hidden">Clear</span>
+            </button>
+          )}
         </div>
 
         {items.length === 0 ? (
@@ -82,30 +91,7 @@ const Cart = () => {
             {/* Cart Items */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-lg shadow-sm p-4 sm:p-6">
-                {/* Cart Header with Clear Button */}
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-6">
-                  <div>
-                    <h2 className="text-xl font-semibold text-gray-800">
-                      Cart Items
-                    </h2>
-                    <p className="text-sm text-gray-500 mt-1">
-                      {total_items} {total_items === 1 ? "item" : "items"} in
-                      your cart
-                    </p>
-                  </div>
-
-                  {items.length > 0 && (
-                    <button
-                      onClick={handleClearCart}
-                      className="flex items-center space-x-2 mt-3 sm:mt-0 px-3 py-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors border border-red-200 hover:border-red-300"
-                    >
-                      <AlertTriangle className="h-4 w-4" />
-                      <span className="text-sm font-medium">Clear Cart</span>
-                    </button>
-                  )}
-                </div>
-
-                {/* Cart Items List */}
+                {/* Cart Items List - No header needed */}
                 <div className="space-y-3">
                   {items.map((item) => (
                     <CartItem key={item.cart_id} item={item} />
