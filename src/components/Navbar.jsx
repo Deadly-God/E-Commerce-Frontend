@@ -31,7 +31,7 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="mx-auto px-4">
-        <div className="flex items-center py-4">
+        <div className="flex items-center py-2">
           {/* Logo - Fixed position from left */}
           <div className="ml-0">
             <Link to="/" className="flex items-center">
