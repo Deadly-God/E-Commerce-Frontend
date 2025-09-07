@@ -85,7 +85,11 @@ const Home = () => {
 
       <div className="flex justify-between items-center mb-6">
         <p className="text-gray-600">
-          {loading ? "Searching..." : `${products.length} products found`}
+          {loading
+            ? "Searching..."
+            : `${products.length} product${
+                products.length < 2 ? "" : "s"
+              } found`}
         </p>
       </div>
 
