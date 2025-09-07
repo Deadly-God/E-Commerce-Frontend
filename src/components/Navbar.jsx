@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { ShoppingCart, User, LogOut, Store } from "lucide-react";
+import { ShoppingCart, User } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { useCart } from "../context/CartContext";
 
@@ -14,16 +14,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex items-center py-4">
           {/* Logo - Fixed position from left */}
-          <div className="ml-6">
-            <Link to="/" className="flex items-center space-x-2">
-              <Store className="h-8 w-8 text-primary-600" />
-              <span className="text-2xl font-bold text-gray-800">
-                EcomStore
-              </span>
+          <div className="ml-0">
+            <Link to="/" className="flex items-center">
+              <svg width="120" height="32" viewBox="0 0 120 32" className="h-8">
+                {/* Logo Icon Placeholder*/}
+
+                {/* Logo Text */}
+                <text
+                  x="28"
+                  y="22"
+                  fontFamily="system-ui, -apple-system, sans-serif"
+                  fontSize="18"
+                  fontWeight="bold"
+                  fill="#1f2937"
+                >
+                  Astra
+                </text>
+              </svg>
             </Link>
           </div>
 
@@ -32,42 +43,25 @@ const Navbar = () => {
 
           {/* Navigation Links - Right side */}
           <div className="flex items-center space-x-6">
-            <Link
-              to="/"
-              className="text-gray-600 hover:text-primary-600 transition-colors font-medium"
-            >
-              Products
-            </Link>
-
             {isAuthenticated ? (
               <>
                 {/* Cart Icon with Badge */}
                 <Link
                   to="/cart"
-                  className="relative text-gray-600 hover:text-primary-600 transition-colors"
+                  className="relative text-gray-600 hover:text-primary-600 transition-colors group"
                 >
-                  <ShoppingCart className="h-6 w-6" />
+                  <ShoppingCart className="h-6 w-6 group-hover:scale-110 transition-transform" />
                   {total_items > 0 && (
                     <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-medium">
-                      {total_items}
+                      {total_items > 99 ? "99+" : total_items}
                     </span>
                   )}
                 </Link>
 
-                {/* User Menu */}
-                <div className="flex items-center space-x-3 bg-gray-50 rounded-full px-3 py-2">
-                  <User className="h-5 w-5 text-gray-600" />
-                  <span className="text-gray-700 font-medium">
-                    Hi, {user?.name}
-                  </span>
-                  <button
-                    onClick={handleLogout}
-                    className="text-gray-500 hover:text-red-600 transition-colors ml-2"
-                    title="Logout"
-                  >
-                    <LogOut className="h-5 w-5" />
-                  </button>
-                </div>
+                {/* Profile Icon */}
+                <button className="text-gray-600 hover:text-primary-600 transition-colors">
+                  <User className="h-6 w-6" />
+                </button>
               </>
             ) : (
               <div className="flex items-center space-x-4">
